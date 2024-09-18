@@ -60,7 +60,7 @@ fn parse_csv() -> Result<(), Box<dyn Error>>
     let mut ctr : usize = 0;
     for result in csvrdr.records()
     {
-        ctr = ctr + 1;
+        ctr += 1;
         let record : SBARecord = match result
         {
             Ok(strrec) => strrec.deserialize::<SBARecord>(Some(&headers))?,
@@ -88,7 +88,7 @@ fn parse_csv() -> Result<(), Box<dyn Error>>
                         Ok(isbn) => isbn,
                     },
                 };
-                println!("{}: {} ({:?})", ctr, isbn.to_string(), isbnx);
+                println!("{}: {} ({:?})", ctr, isbn, isbnx);
             },
             None =>
             {
